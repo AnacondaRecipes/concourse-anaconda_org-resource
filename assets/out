@@ -1,30 +1,16 @@
 #!/usr/bin/env bash
 
 SRC_DIR=$1
-echo $SRC_DIR 1>&2
-echo $BUILD_ID 1>&2
-echo $BUILD_NAME 1>&2
-echo $BUILD_JOB_NAME 1>&2
-echo $BUILD_PIPELINE_NAME 1>&2
-echo $ATC_EXTERNAL_URL 1>&2
-
 SCRIPT_INPUT='/tmp/input'
 cat > $SCRIPT_INPUT <&0 # STDIN params
 
 TOKEN=$(jq -r '.source.token // ""' < $SCRIPT_INPUT)
-SYNC_DIR=$(jq -r '.params.sync_dir // ""' < $SCRIPT_INPUT)
-
-echo $TOKEN        1>&2
-echo $SYNC_DIR     1>&2
-
-TIMESTAMP=$(find "$SYNC_DIR" -type f -exec stat -c "%Y" {} \; | sort -n | tail -1)
-echo "DEBUG: Timestamp of latest modified file is $TIMESTAMP" 1>&2
 
 shopt -s globstar 1>&2
-anaconda upload -t ${TOKEN} ${SYNC_DIR}/**/*.tar.bz2 1>&2
+anaconda --token ${TOKEN} upload $(find . -type f -iname *.tar.bz2)
 
 if [ $? -eq 0 ]; then
-    echo "{ \"version\": { \"ref\": \"$TIMESTAMP\"} }"
+    echo "{ \"version\": { \"ref\": \"\"} }"
 fi
 
 exit $?
