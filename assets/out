@@ -21,7 +21,7 @@ TIMESTAMP=$(find "$SYNC_DIR" -type f -exec stat -c "%Y" {} \; | sort -n | tail -
 echo "DEBUG: Timestamp of latest modified file is $TIMESTAMP" 1>&2
 
 shopt -s globstar 1>&2
-anaconda upload --token ${TOKEN} ${SYNC_DIR}/**/*.tar.bz2 1>&2
+anaconda upload -t ${TOKEN} ${SYNC_DIR}/**/*.tar.bz2 1>&2
 
 if [ $? -eq 0 ]; then
     echo "{ \"version\": { \"ref\": \"$TIMESTAMP\"} }"
