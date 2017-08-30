@@ -1,0 +1,147 @@
+groups: []
+resources:
+- name: recipe-repo-source
+  type: git
+  source:
+    submodules: all
+    uri: https://github.com/msarahan/conda_submodule_repo_test
+- name: rsync-config
+  type: rsync-resource
+  source:
+    base_dir: /ci/miniconda-x-forge/config
+    disable_version_path: true
+    private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEAurv3djHcyba/iF8gIa7l/2tiiPJzbqH7tP9j0S1sbjs4/3VA
+      IZwf8cJELKFJ3KNspR6FJHR/PLZuNbStzYjuDKU/o/tNJ5BTedfSPNfUXtF+lY9B
+      8gfWib5KBMuMEUDfkLsopn6oHs8bkBaYeT7HKEriOf82Qb3LmtD+fFuhOhWYfE0F
+      Hil3FRLaKBAJ6sXGEMIs/QvhkQuXkbevGu8gj7ysnXYRRVL/4Pa9sHF4kpMczL0n
+      2D58UjutpuhuatsguoDYQsrLmleeFdVUxCaRrzDmwPh96cYWOM7U+u9XY14HhJhz
+      ZEFJh59i8nbG7ofXhYIrvjR7A70pZo49HOferQIDAQABAoIBAGc1CJrdCEi8prO6
+      z8mOHzTCp11Fk6MsCDCLjyHH10w9k00uAtoQrl8ynfeE1YwLDztb2P7DHKfztIoe
+      aIlXCysWEkyR0pzxWhHXxS03pPsbErmayjn5Nww+ji6ESdAnaOlXaCpNiqIsmfFT
+      a8Znei+847hmZBiFzAivRlh5VG0DGxLweDu6h+ZvWhTqxZ+yYHbuW+xxSDSYL/+Z
+      6GR31YB+cbZh+mcZCBTv6NIPOi+9Sf44W0740ODOOAdfRGZe5IY6X9iP3OExjP7w
+      y8iHavY8ZJ3C1kM3nJ43Ot1kgogEk5b6dDWXAFIgL+qmx9/Si49KOPdfa9ZGZuUi
+      zyuk/MECgYEA91lM26pCnYbka4zfzpP/7nZQCybZ0pOj0dSMZ3RfLwHK4XFmjR2w
+      DcVkOzW6VU4n0scepaBJxf1dw5PScVFm8EmQtIra5w9RhwxV8aDubY/cKtwAZcx4
+      5QSq3fG3VY8UrC0twc269gnS+IGhk+k3Fa4XXkDtKN9dWfF8Ag69imUCgYEAwUPw
+      RA2zLLggGG/fYB10hac0Nu9G2L2KV7LzOGVwwwiff3V684Rv6OuOOn1fV9tinLOM
+      buoytat6jZsczaosbvA/AzrCU0UGIYzT8CO4PJB4+GCR5cd10UjOmIKvjEAHvqEW
+      n8cKs5oQpTj3VO0vF4PlCnTsCtGZAbXwZ0CgWqkCgYAct8CFrIHpejThC80cVfCc
+      Bh6K/OrDWSLnBM98X3WBpqqgfCMU9UJwht95RGaq6tUS0s2LG04Vb7JIN8xyHape
+      8Zucapa5xvyHOnZsBGxKSi6cx0hAiXnr1Rvlgt/vThpvVxt96d3wHPniomJZIvWj
+      TcAm0FD4st5KyA/GyWFWRQKBgAblB5NF8dhskSiOBSgGpPuHpYM4MgzVZjQOvEKM
+      y+MJUbdYV5SMavmiPaa0hkw6FWCFv0LNtBVrEqoumG513bPvejABTqFt2vQjdAQj
+      IhV3CfnCaDIMVZWrxUMHln+oYR5Z3NbCYQ1bN7DNQXWUKJPsLqWa2jjglVbMSNFG
+      KvJRAoGBAO1YxI2T+SLJZx0ug3jLDSXPWlTJhPs0EJ0IV/pUd2DIols7eMP9yLDL
+      Jei79Fq8kY2vMNrKOtEXqxCTRkqhV+N6f/lmnEJw5br53Hsq8zU2FdvqMD2gcoN2
+      oPLTWsmcIIA3RwRAgu4jzJ0lXs/wAtsvtD09GXiyWzFMbRoS6Ugv
+      -----END RSA PRIVATE KEY-----
+    server: bremen.corp.continuum.io
+    user: msarahan
+- name: rsync-recipes
+  type: rsync-resource
+  source:
+    base_dir: /ci/miniconda-x-forge/plan_and_recipes
+    disable_version_path: true
+    private_key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEAurv3djHcyba/iF8gIa7l/2tiiPJzbqH7tP9j0S1sbjs4/3VA
+      IZwf8cJELKFJ3KNspR6FJHR/PLZuNbStzYjuDKU/o/tNJ5BTedfSPNfUXtF+lY9B
+      8gfWib5KBMuMEUDfkLsopn6oHs8bkBaYeT7HKEriOf82Qb3LmtD+fFuhOhWYfE0F
+      Hil3FRLaKBAJ6sXGEMIs/QvhkQuXkbevGu8gj7ysnXYRRVL/4Pa9sHF4kpMczL0n
+      2D58UjutpuhuatsguoDYQsrLmleeFdVUxCaRrzDmwPh96cYWOM7U+u9XY14HhJhz
+      ZEFJh59i8nbG7ofXhYIrvjR7A70pZo49HOferQIDAQABAoIBAGc1CJrdCEi8prO6
+      z8mOHzTCp11Fk6MsCDCLjyHH10w9k00uAtoQrl8ynfeE1YwLDztb2P7DHKfztIoe
+      aIlXCysWEkyR0pzxWhHXxS03pPsbErmayjn5Nww+ji6ESdAnaOlXaCpNiqIsmfFT
+      a8Znei+847hmZBiFzAivRlh5VG0DGxLweDu6h+ZvWhTqxZ+yYHbuW+xxSDSYL/+Z
+      6GR31YB+cbZh+mcZCBTv6NIPOi+9Sf44W0740ODOOAdfRGZe5IY6X9iP3OExjP7w
+      y8iHavY8ZJ3C1kM3nJ43Ot1kgogEk5b6dDWXAFIgL+qmx9/Si49KOPdfa9ZGZuUi
+      zyuk/MECgYEA91lM26pCnYbka4zfzpP/7nZQCybZ0pOj0dSMZ3RfLwHK4XFmjR2w
+      DcVkOzW6VU4n0scepaBJxf1dw5PScVFm8EmQtIra5w9RhwxV8aDubY/cKtwAZcx4
+      5QSq3fG3VY8UrC0twc269gnS+IGhk+k3Fa4XXkDtKN9dWfF8Ag69imUCgYEAwUPw
+      RA2zLLggGG/fYB10hac0Nu9G2L2KV7LzOGVwwwiff3V684Rv6OuOOn1fV9tinLOM
+      buoytat6jZsczaosbvA/AzrCU0UGIYzT8CO4PJB4+GCR5cd10UjOmIKvjEAHvqEW
+      n8cKs5oQpTj3VO0vF4PlCnTsCtGZAbXwZ0CgWqkCgYAct8CFrIHpejThC80cVfCc
+      Bh6K/OrDWSLnBM98X3WBpqqgfCMU9UJwht95RGaq6tUS0s2LG04Vb7JIN8xyHape
+      8Zucapa5xvyHOnZsBGxKSi6cx0hAiXnr1Rvlgt/vThpvVxt96d3wHPniomJZIvWj
+      TcAm0FD4st5KyA/GyWFWRQKBgAblB5NF8dhskSiOBSgGpPuHpYM4MgzVZjQOvEKM
+      y+MJUbdYV5SMavmiPaa0hkw6FWCFv0LNtBVrEqoumG513bPvejABTqFt2vQjdAQj
+      IhV3CfnCaDIMVZWrxUMHln+oYR5Z3NbCYQ1bN7DNQXWUKJPsLqWa2jjglVbMSNFG
+      KvJRAoGBAO1YxI2T+SLJZx0ug3jLDSXPWlTJhPs0EJ0IV/pUd2DIols7eMP9yLDL
+      Jei79Fq8kY2vMNrKOtEXqxCTRkqhV+N6f/lmnEJw5br53Hsq8zU2FdvqMD2gcoN2
+      oPLTWsmcIIA3RwRAgu4jzJ0lXs/wAtsvtD09GXiyWzFMbRoS6Ugv
+      -----END RSA PRIVATE KEY-----
+    server: bremen.corp.continuum.io
+    user: msarahan
+resource_types:
+- name: rsync-resource
+  type: docker-image
+  source:
+    repository: msarahan/concourse-rsync-resource
+    tag: latest
+jobs:
+- name: collect-tasks
+  public: true
+  plan:
+  - get: recipe-repo-source
+    trigger: true
+  - get: rsync-config
+  - task: c3i-examine
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: continuumio/conda-concourse-ci
+      run:
+        path: c3i
+        args:
+        - examine
+        - miniconda-x-forge
+        - .
+        - --matrix-base-dir
+        - ../rsync-config/
+        - --output-dir
+        - ../output/{git_identifier}
+        dir: recipe-repo-source
+      inputs:
+      - name: recipe-repo-source
+        path: ""
+      - name: rsync-config
+        path: ""
+      outputs:
+      - name: output
+        path: ""
+  - put: rsync-recipes
+    params:
+      sync_dir: output
+  - task: set-execute-pipeline
+    config:
+      platform: linux
+      image_resource:
+        type: docker-image
+        source:
+          repository: continuumio/conda-concourse-ci
+      run:
+        path: c3i
+        args:
+        - submit
+        - miniconda-x-forge
+        - --pipeline-file
+        - output/{git_identifier}/plan.yml
+        - --pipeline-name
+        - '{base_name}-execute-{git_identifier}'
+        - --src-dir
+        - recipe-repo-source
+        - --config-root-dir
+        - rsync-config/
+        dir: ""
+      inputs:
+      - name: rsync-config
+        path: ""
+      - name: recipe-repo-source
+        path: ""
+      - name: output
+        path: ""
