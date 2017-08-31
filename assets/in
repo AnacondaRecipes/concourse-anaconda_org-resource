@@ -1,12 +1,3 @@
 #!/bin/bash
 
-set -e
-set -x
-
-exec 3>&1
-exec 1>&2
-
-payload=$(mktemp /tmp/anaconda_org-in.XXXXXX)
-cat > $payload <&0
-
-jq -n "{version:{timestamp:\"$(date +%s)\"}}" >&3
+echo "{version:{ref:\"$(date +%s)\"}}"
