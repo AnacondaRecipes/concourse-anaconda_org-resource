@@ -6,6 +6,9 @@ cat > $SCRIPT_INPUT <&0 # STDIN params
 
 TOKEN=$(jq -r '.source.token // ""' < $SCRIPT_INPUT)
 
+echo "pwd is $(pwd)" 1>&2
+ls 1>&2
+
 echo "anaconda --token ${TOKEN} upload --force $(find . -type f -iname *.tar.bz2)"  1>&2
 anaconda --token ${TOKEN} upload --force $(find . -type f -iname *.tar.bz2)  1>&2
 
