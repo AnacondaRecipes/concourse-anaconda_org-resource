@@ -8,8 +8,8 @@ TOKEN=$(jq -r '.source.token // ""' < $SCRIPT_INPUT)
 
 cd $SRC_DIR
 
-echo "anaconda --token ${TOKEN} upload --force $(find . -type f -iname *.tar.bz2)"  1>&2
-anaconda --token ${TOKEN} upload --force $(find . -type f -iname *.tar.bz2)  1>&2
+find . -type f -print0 | xargs -0 -I file mv file .  1>&2
+anaconda --token ${TOKEN} upload --force *.tar.bz2  1>&2
 
 if [ $? -eq 0 ]; then
     echo "{ \"version\": { \"ref\": \"\"} }"
