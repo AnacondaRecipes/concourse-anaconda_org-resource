@@ -4,12 +4,21 @@ SRC_DIR=$1
 SCRIPT_INPUT='/tmp/input'
 cat > $SCRIPT_INPUT <&0 # STDIN params
 
+# not used yet
 TOKEN=$(jq -r '.source.token // ""' < $SCRIPT_INPUT)
+# not used yet
+CHANNEL=$(jq -r '.source.channel // ""' < $SCRIPT_INPUT)
+USER=$(jq -r '.source.user // ""' < $SCRIPT_INPUT)
+PASSWORD=$(jq -r '.source.password // ""' < $SCRIPT_INPUT)
+export CONDA_CHANNEL_ALIAS=$(jq -r '.source.server // ""' < $SCRIPT_INPUT)
 
 cd $SRC_DIR
 
 find . -type f -print0 | xargs -0 -I file mv file .  1>&2
-anaconda --token ${TOKEN} upload --force *.tar.bz2  1>&2
+# Repo v6
+conda repo upload --user ${USER} --password ${PASSWORD} *.tar.bz2 1>&2
+# repo v4
+# anaconda --token ${TOKEN} upload --force *.tar.bz2  1>&2
 
 if [ $? -eq 0 ]; then
     echo "{ \"version\": { \"ref\": \"\"} }"
