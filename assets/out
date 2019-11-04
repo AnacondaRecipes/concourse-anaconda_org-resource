@@ -17,12 +17,12 @@ cd $SRC_DIR
 find . -type f -print0 | xargs -0 -I file mv file .  1>&2
 # Repo v6
 conda repo login --user ${USER} --password ${PASSWORD} 1>&2
-conda repo upload *.tar.bz2 1>&2
+conda repo upload -c ${USER} *.tar.bz2 1>&2
 # repo v4
 # anaconda --token ${TOKEN} upload --force *.tar.bz2  1>&2
 
 if [ $? -eq 0 ]; then
-    echo "{ \"version\": { \"ref\": \"\"} }"
+    echo "{ \"version\": { \"ref\": \"\"} }";
 fi
 
 exit $?
